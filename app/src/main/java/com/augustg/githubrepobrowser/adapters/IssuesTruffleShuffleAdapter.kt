@@ -17,6 +17,7 @@ class IssuesTruffleShuffleAdapter(
     override fun getViewContent(view: View, cardContent: Issue) {
         (view.findViewById<View>(R.id.title_field) as TextView?)?.text = cardContent.title
         (view.findViewById<View>(R.id.description_field) as TextView?)?.text = "#${cardContent.number} opened by ${cardContent.account}"
+        (view.findViewById<View>(R.id.number_field) as TextView?)?.text = "#${cardContent.number}"
         (view.findViewById<View>(R.id.comment_field) as TextView?)?.text = cardContent.commentCount.toString()
     }
 }

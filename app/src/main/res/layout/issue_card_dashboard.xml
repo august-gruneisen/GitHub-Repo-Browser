@@ -32,10 +32,21 @@
                 android:layout_marginEnd="16dp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/number_field"
                 app:layout_constraintStart_toEndOf="@+id/issue_icon"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Request: Show 'set' data tables in doc strings" />
+
+            <TextView
+                android:id="@+id/number_field"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="#1035" />
 
             <ImageView
                 android:id="@+id/bottom_line"
