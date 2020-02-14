@@ -28,7 +28,7 @@ class GitHubViewModel : ViewModel() {
         get() = _issues
 
     // hardcoded user value for searching repos
-    private val user = "intuit"
+    val user = "intuit"
 
     /**
      *
@@ -58,7 +58,7 @@ class GitHubViewModel : ViewModel() {
 
     fun fetchIssues(repo: String) {
 
-        retrofit.getIssues(user, repo).enqueue(object: Callback<List<Issue>> {
+        retrofit.getIssues(user, repo, "all").enqueue(object: Callback<List<Issue>> {
             override fun onResponse(call: Call<List<Issue>>, response: Response<List<Issue>>) {
                 if (response.isSuccessful) {
                     _issues.value = response.body() as MutableList<Issue>

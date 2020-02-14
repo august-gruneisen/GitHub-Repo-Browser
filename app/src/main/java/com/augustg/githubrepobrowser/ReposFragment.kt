@@ -67,7 +67,8 @@ class ReposFragment : Fragment() {
 
     // on long clicking a repo, navigate to the next fragment and pass its name
     private fun showIssues(name: String) {
-        findNavController().navigate(ReposFragmentDirections.showIssues(name))
+        //findNavController().navigate(ReposFragmentDirections.showIssues(name))
+        findNavController().navigate(ReposFragmentDirections.showIssuesTruffle(name))
     }
 
 
