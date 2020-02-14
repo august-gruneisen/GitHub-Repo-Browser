@@ -5,6 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface RetrofitInterface {
 
@@ -12,7 +13,7 @@ interface RetrofitInterface {
     fun getRepos(@Path("username") username: String): Call<List<Repo>>
 
     @GET("repos/{owner}/{repo}/issues")
-    fun getIssues(@Path("owner") owner: String, @Path("repo") repo: String): Call<List<Issue>>
+    fun getIssues(@Path("owner") owner: String, @Path("repo") repo: String, @Query("type") type: String): Call<List<Issue>>
 
     companion object {
 

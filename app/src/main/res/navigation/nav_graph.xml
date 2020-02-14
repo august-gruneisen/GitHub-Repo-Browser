@@ -11,12 +11,24 @@
         <action
             android:id="@+id/showIssues"
             app:destination="@+id/issuesFragment" />
+        <action
+            android:id="@+id/showIssuesTruffle"
+            app:destination="@+id/issuesFragmentTruffle" />
     </fragment>
     <fragment
         android:id="@+id/issuesFragment"
         android:name="com.augustg.githubrepobrowser.IssuesFragment"
         android:label="IssuesFragment"
-        tools:layout="@layout/fragment_issues" >
+        tools:layout="@layout/fragment_issues">
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/issuesFragmentTruffle"
+        android:name="com.augustg.githubrepobrowser.IssuesFragmentTruffle"
+        android:label="IssuesFragmentTruffle"
+        tools:layout="@layout/fragment_issues_truffle">
         <argument
             android:name="name"
             app:argType="string" />
