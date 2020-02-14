@@ -9,6 +9,9 @@ import android.widget.BaseAdapter
 import com.intuit.truffleshuffle.CardViewGroup
 import java.util.ArrayList
 
+// I forked this repository and added a feature :)
+// https://github.com/intuit/truffle-shuffle/pull/13
+
 /**
  * The adapter for mapping the array of card contents to the specific views in the card gallery
  * Note that the array of contents is generic.
