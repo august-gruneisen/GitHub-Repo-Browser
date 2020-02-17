@@ -9,6 +9,7 @@ import androidx.cardview.widget.CardView
 import com.augustg.githubrepobrowser.R
 import kotlinx.android.synthetic.main.repo_card.view.*
 
+// I wrote this class originally for reuse, but ended up binding to data in the adapter
 class RepoCard @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : CardView(context, attrs, defStyleAttr) {
@@ -29,7 +30,7 @@ class RepoCard @JvmOverloads constructor(
         showDetails(detailsVisible)
     }
 
-    fun showDetails(show: Boolean) {
+    private fun showDetails(show: Boolean) {
         if (show) {
             details_layout.visibility = View.VISIBLE
             bottom_line.visibility = View.VISIBLE

@@ -9,7 +9,8 @@ import android.widget.BaseAdapter
 import com.intuit.truffleshuffle.CardViewGroup
 import java.util.ArrayList
 
-// I forked this repository and added a feature :)
+// I forked the Truffle Shuffle repository and added a feature :)
+// I'm using it here to display issues of the selected repo
 // https://github.com/intuit/truffle-shuffle/pull/13
 
 /**

@@ -31,16 +31,16 @@ class GitHubViewModel : ViewModel() {
     val user = "intuit"
 
     /**
-     *
      * Currently making network calls directly from the ViewModel
      * Future versions should do this from a repository and persist the data
-     *
      */
-
     private val retrofit = RetrofitInterface.client()
 
+    /**
+     * Fetches repos from the network
+     * If the network request is successful, store the returned list in the view model
+     */
     fun fetchRepos() {
-
         retrofit.getRepos(user).enqueue(object: Callback<List<Repo>> {
             override fun onResponse(call: Call<List<Repo>>, response: Response<List<Repo>>) {
                 if (response.isSuccessful) {
@@ -56,8 +56,11 @@ class GitHubViewModel : ViewModel() {
         })
     }
 
+    /**
+     * Fetches issues from the network
+     * If the network request is successful, store the returned list in the view model
+     */
     fun fetchIssues(repo: String) {
-
         retrofit.getIssues(user, repo, "all").enqueue(object: Callback<List<Issue>> {
             override fun onResponse(call: Call<List<Issue>>, response: Response<List<Issue>>) {
                 if (response.isSuccessful) {
@@ -72,5 +75,4 @@ class GitHubViewModel : ViewModel() {
             }
         })
     }
-
 }

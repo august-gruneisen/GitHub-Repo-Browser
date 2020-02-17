@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.repo_card.view.*
 
 /**
  *
- * I'm looking forward to explaining my implementation of this adapter in person!
+ * I'm looking forward to explaining my implementation of this adapter!
  *
  */
 

@@ -27,6 +27,5 @@ interface RetrofitInterface {
         fun client() : RetrofitInterface {
             return retrofit.create(RetrofitInterface::class.java)
         }
-
     }
 }

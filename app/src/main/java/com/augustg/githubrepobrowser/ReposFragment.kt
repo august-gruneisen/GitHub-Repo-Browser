@@ -15,13 +15,9 @@ import com.augustg.githubrepobrowser.adapters.ReposAdapter
 import kotlinx.android.synthetic.main.fragment_repos.*
 
 /**
- *
- * The logic here is very simple.
- *
- * Just initialize a RecyclerView that will hold repos,
- * pass the adapter a ViewModel to observe data,
- * and define a click handler.
- *
+ * Just initializes a RecyclerView that will hold repos,
+ * passes the adapter a ViewModel to observe data,
+ * and defines a click handler.
  */
 class ReposFragment : Fragment() {
 
@@ -38,15 +34,12 @@ class ReposFragment : Fragment() {
             hasFixedSize()
             layoutManager = LinearLayoutManager(activity?.applicationContext)
             adapter = ReposAdapter(viewModel, repoLongClickListener = { _, name: String ->
-
-                        // specifies an action to be taken on long clicking a repo
+                        // specifies the action to be taken on long clicking a repo
                         showIssues(name)
-
                     })
         }
 
         /**
-         *
          * Once the activity is created and view is initialized,
          * we ask the network for repositories and observe the response.
          *
@@ -56,7 +49,6 @@ class ReposFragment : Fragment() {
          * Simply notifying the adapter once data changes will allow it to create and bind views once.
          * This is more readable and simpler to implement than DiffUtil,
          * but less efficient if data will be fetched multiple times (pagination).
-         *
          */
         viewModel.fetchRepos()
         viewModel.repos.observe(this, Observer {
@@ -65,11 +57,10 @@ class ReposFragment : Fragment() {
 
     }
 
-    // on long clicking a repo, navigate to the next fragment and pass its name
+    /**
+     * Navigate to the next fragment passing the selected repo's name
+     */
     private fun showIssues(name: String) {
-        //findNavController().navigate(ReposFragmentDirections.showIssues(name))
-        findNavController().navigate(ReposFragmentDirections.showIssuesTruffle(name))
+        findNavController().navigate(ReposFragmentDirections.showIssues(name))
     }
-
-
 }
