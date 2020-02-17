@@ -4,15 +4,16 @@ import android.content.Context
 import android.view.View
 import android.widget.TextView
 import com.augustg.githubrepobrowser.R
+import com.augustg.githubrepobrowser.adapters.truffleShuffle.TruffleShuffleAdapter
 import com.augustg.githubrepobrowser.api.Issue
 
-class IssuesTruffleShuffleAdapter(
+class IssuesAdapter(
     cardDetails: ArrayList<Issue>,
     mContext: Context,
     layout: Int,
     dashboardLayout: Int
 ) :
-    CardContentAdapter<Issue>(cardDetails, mContext, layout, dashboardLayout) {
+    TruffleShuffleAdapter<Issue>(cardDetails, mContext, layout, dashboardLayout) {
 
     override fun getViewContent(view: View, cardContent: Issue) {
         (view.findViewById<View>(R.id.title_field) as TextView?)?.text = cardContent.title

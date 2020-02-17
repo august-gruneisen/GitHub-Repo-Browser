@@ -1,4 +1,4 @@
-package com.augustg.githubrepobrowser.adapters
+package com.augustg.githubrepobrowser.adapters.truffleShuffle
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import android.widget.BaseAdapter
 import com.intuit.truffleshuffle.CardViewGroup
 import java.util.ArrayList
 
-// I forked the Truffle Shuffle repository and added a feature :)
+// I forked Truffle Shuffle and added a feature :)
 // I'm using it here to display issues of the selected repo
 // https://github.com/intuit/truffle-shuffle/pull/13
 
@@ -19,11 +19,11 @@ import java.util.ArrayList
  * If a separate dashboard layout is provided, it will be used when no cards are selected
  * Created by Katie Levy
  */
-abstract class CardContentAdapter<T : Any?>(
+abstract class TruffleShuffleAdapter<T : Any?>(
     private val cardContentArray: ArrayList<T>,
     mContext: Context,
     private val layout: Int,
-    private val dashboardLayout: Int = layout
+    private val dashboardLayout: Int = layout // added feature
 ) : BaseAdapter() {
     private val layoutInflater: LayoutInflater = LayoutInflater.from(mContext)
     private val separateLayoutProvided = (dashboardLayout != layout)

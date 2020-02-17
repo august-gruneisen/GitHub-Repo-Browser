@@ -10,11 +10,8 @@ import com.augustg.githubrepobrowser.databinding.RepoCardBinding
 import kotlinx.android.synthetic.main.repo_card.view.*
 
 /**
- *
  * I'm looking forward to explaining my implementation of this adapter!
- *
  */
-
 class ReposAdapter(
     private val viewModel: GitHubViewModel,
     private val repoLongClickListener: (View, String) -> Unit
@@ -36,13 +33,14 @@ class ReposAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
         holder.bind(position, holder.itemView.context as LifecycleOwner)
 
+        // Toggle details on click
         holder.itemView.setOnClickListener {
             showHideDetails(holder)
         }
 
+        // Navigate to selected issue on long click
         holder.itemView.setOnLongClickListener{
             repoLongClickListener(it, holder.itemView.name_field.text.toString())
             true
@@ -53,6 +51,11 @@ class ReposAdapter(
         return viewModel.repos.value!!.size
     }
 
+    /**
+     * Toggles detail view when a repo is clicked
+     *
+     * @param holder A ViewHolder displaying a repository
+     */
     private fun showHideDetails(holder: ViewHolder) {
         if (holder.itemView.details_layout.visibility == View.GONE) {
             holder.itemView.details_layout.visibility = View.VISIBLE
@@ -62,5 +65,4 @@ class ReposAdapter(
             holder.itemView.bottom_line.visibility = View.GONE
         }
     }
-
 }

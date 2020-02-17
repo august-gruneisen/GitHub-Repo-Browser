@@ -29,21 +29,21 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:scaleType="fitCenter"
+                android:src='@{viewModel.repos[position].fork ? @drawable/ic_fork : @drawable/ic_repo}'
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_repo" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/owner_field"
                 android:layout_width="wrap_content"
-                android:text='@{viewModel.user + "/"}'
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/colorAccent"
+                android:text='@{viewModel.user + "/"}'
+                tools:text="intuit/"
                 app:layout_constraintStart_toEndOf="@+id/repo_icon"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="intuit/" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/name_field"
@@ -51,25 +51,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@{viewModel.repos[position].name}"
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold"
+                android:text="@{viewModel.repos[position].name}"
+                tools:text="karate"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/owner_field"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="karate" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/description_field"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@{viewModel.repos[position].description}"
                 android:textSize="12sp"
+                android:text="@{viewModel.repos[position].description}"
+                tools:text="Test Automation Made Simple"
                 app:layout_constraintEnd_toEndOf="@+id/name_field"
                 app:layout_constraintStart_toStartOf="@+id/owner_field"
-                app:layout_constraintTop_toBottomOf="@+id/owner_field"
-                tools:text="Test Automation Made Simple" />
+                app:layout_constraintTop_toBottomOf="@+id/owner_field" />
 
             <ImageView
                 android:id="@+id/divider"
@@ -108,16 +108,16 @@
 
                 <TextView
                     android:id="@+id/star_field"
-                    android:text="@{Integer.toString(viewModel.repos[position].starCount)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:textSize="12sp"
+                    android:text="@{Integer.toString(viewModel.repos[position].starCount)}"
+                    tools:text="2.8k"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/star_icon"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.47"
-                    tools:text="2.8k" />
+                    app:layout_constraintVertical_bias="0.47"/>
 
                 <ImageView
                     android:id="@+id/watcher_icon"
@@ -132,16 +132,16 @@
 
                 <TextView
                     android:id="@+id/watcher_field"
-                    android:text="@{Integer.toString(viewModel.repos[position].watcherCount)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:textSize="12sp"
+                    android:text="@{Integer.toString(viewModel.repos[position].watcherCount)}"
+                    tools:text="376"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/watcher_icon"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.47"
-                    tools:text="376" />
+                    app:layout_constraintVertical_bias="0.47"/>
 
                 <ImageView
                     android:id="@+id/issue_icon"
@@ -156,16 +156,16 @@
 
                 <TextView
                     android:id="@+id/issue_field"
-                    android:text="@{Integer.toString(viewModel.repos[position].issueCount)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:textSize="12sp"
+                    android:text="@{Integer.toString(viewModel.repos[position].issueCount)}"
+                    tools:text="44"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/issue_icon"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.47"
-                    tools:text="44" />
+                    app:layout_constraintVertical_bias="0.47"/>
 
                 <ImageView
                     android:id="@+id/fork_icon"
@@ -180,16 +180,16 @@
 
                 <TextView
                     android:id="@+id/fork_field"
-                    android:text="@{Integer.toString(viewModel.repos[position].forkCount)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:textSize="12sp"
+                    android:text="@{Integer.toString(viewModel.repos[position].forkCount)}"
+                    tools:text="23"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/fork_icon"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.47"
-                    tools:text="23" />
+                    app:layout_constraintVertical_bias="0.47"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

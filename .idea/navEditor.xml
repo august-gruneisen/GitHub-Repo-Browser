@@ -20,18 +20,6 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="issuesFragmentTruffle">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="249" />
-                            <option name="y" value="160" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="reposFragment">
                     <value>
                       <LayoutPositions>
@@ -44,11 +32,6 @@
                         <option name="myPositions">
                           <map>
                             <entry key="showIssues">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="showIssuesTruffle">
                               <value>
                                 <LayoutPositions />
                               </value>

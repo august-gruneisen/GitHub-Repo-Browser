@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.augustg.githubrepobrowser.api.Issue
-import com.augustg.githubrepobrowser.adapters.IssuesTruffleShuffleAdapter
+import com.augustg.githubrepobrowser.adapters.IssuesAdapter
 import com.intuit.truffleshuffle.CardViewGroup
 import kotlinx.android.synthetic.main.fragment_issues.*
 
@@ -45,7 +45,7 @@ class IssuesFragment : Fragment() {
     // Sets up a Truffle Shuffle gallery of issue cards :)
     private fun setupCardGallery(it: MutableList<Issue>) {
         val cardLayout = card_gallery_percentage_view_group as CardViewGroup
-        IssuesTruffleShuffleAdapter(
+        IssuesAdapter(
             it as ArrayList<Issue>,
             card_gallery_percentage_view_group.context,
             getInnerCardLayoutDetail(),
