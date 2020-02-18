@@ -20,5 +20,6 @@ class IssuesAdapter(
         (view.findViewById<View>(R.id.description_field) as TextView?)?.text = "#${cardContent.number} opened by ${cardContent.user.login}"
         (view.findViewById<View>(R.id.number_field) as TextView?)?.text = "#${cardContent.number}"
         (view.findViewById<View>(R.id.comment_field) as TextView?)?.text = cardContent.commentCount.toString()
+        (view.findViewById<View>(R.id.body_field) as TextView?)?.text = cardContent.body
     }
 }

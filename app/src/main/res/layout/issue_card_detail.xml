@@ -53,9 +53,7 @@
                 android:id="@+id/details_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/title_field"
                 app:layout_constraintTop_toBottomOf="@id/description_field">
 
@@ -82,6 +80,33 @@
                     tools:text="16" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ScrollView
+                android:id="@+id/scrollView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/bottom_line"
+                app:layout_constraintEnd_toEndOf="@+id/description_field"
+                app:layout_constraintStart_toStartOf="@+id/title_field"
+                app:layout_constraintTop_toBottomOf="@+id/details_layout">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/body_field"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Body will go here..." />
+
+                </LinearLayout>
+
+            </ScrollView>
 
             <ImageView
                 android:id="@+id/bottom_line"
