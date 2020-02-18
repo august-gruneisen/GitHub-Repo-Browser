@@ -31,7 +31,8 @@
                 android:scaleType="fitCenter"
                 android:src='@{viewModel.repos[position].fork ? @drawable/ic_fork : @drawable/ic_repo}'
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/content_description_repo_icon" />
 
             <TextView
                 android:id="@+id/owner_field"
@@ -80,7 +81,8 @@
                 android:src="@android:drawable/divider_horizontal_textfield"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/description_field" />
+                app:layout_constraintTop_toBottomOf="@id/description_field"
+                android:contentDescription="@string/content_description_divider" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/details_layout"
@@ -104,7 +106,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_star" />
+                    app:srcCompat="@drawable/ic_star"
+                    android:contentDescription="@string/content_description_star_icon" />
 
                 <TextView
                     android:id="@+id/star_field"
@@ -128,7 +131,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/star_field"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_watcher" />
+                    app:srcCompat="@drawable/ic_watcher"
+                    android:contentDescription="@string/content_description_watcher_icon" />
 
                 <TextView
                     android:id="@+id/watcher_field"
@@ -152,7 +156,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/watcher_field"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_issue" />
+                    app:srcCompat="@drawable/ic_issue"
+                    android:contentDescription="@string/content_description_issue_icon" />
 
                 <TextView
                     android:id="@+id/issue_field"
@@ -176,7 +181,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/issue_field"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_fork" />
+                    app:srcCompat="@drawable/ic_fork"
+                    android:contentDescription="@string/content_description_fork_icon" />
 
                 <TextView
                     android:id="@+id/fork_field"
@@ -204,7 +210,8 @@
                 tools:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:contentDescription="@string/content_description_divider" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
