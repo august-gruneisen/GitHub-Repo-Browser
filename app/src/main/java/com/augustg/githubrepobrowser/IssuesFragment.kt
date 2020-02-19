@@ -57,10 +57,10 @@ class IssuesFragment : Fragment() {
      * @param issues List of issues to be displayed
      */
     private fun setupCardGallery(issues: MutableList<Issue>) {
-        val cardLayout = card_gallery_percentage_view_group as CardViewGroup
+        val cardLayout = truffle_shuffle as CardViewGroup
         IssuesAdapter(
             issues as ArrayList<Issue>,
-            card_gallery_percentage_view_group.context,
+            truffle_shuffle.context,
             getInnerCardLayoutDetail(),
             getInnerCardLayoutDashboard() // this fourth parameter demos the added feature
         )

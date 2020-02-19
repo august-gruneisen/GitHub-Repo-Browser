@@ -1,8 +1,5 @@
 <resources>
-    <string name="app_name">GitHubRepoBrowser</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">GitHub Repo Browser</string>
     <string name="content_description_divider">divider</string>
     <string name="content_description_comment_icon">comment_icon</string>
     <string name="content_description_issue_icon">issue_icon</string>

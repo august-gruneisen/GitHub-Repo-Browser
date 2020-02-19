@@ -13,6 +13,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/repos_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ReposFragment">
@@ -28,20 +29,6 @@
             tools:listitem="@layout/repo_card">
 
         </androidx.recyclerview.widget.RecyclerView>
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            style="@style/Widget.AppCompat.ProgressBar"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/colorPrimaryDark"
-            android:visibility="@{viewModel.inProgress ? View.VISIBLE : View.GONE}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
