@@ -1,6 +1,5 @@
 package com.augustg.githubrepobrowser
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,10 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.augustg.githubrepobrowser.api.Issue
 import com.augustg.githubrepobrowser.api.Repo
 import com.augustg.githubrepobrowser.api.RetrofitInterface
+import com.augustg.githubrepobrowser.util.Event
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class GitHubViewModel : ViewModel() {
 
@@ -29,18 +26,24 @@ class GitHubViewModel : ViewModel() {
     val issues: LiveData<MutableList<Issue>>
         get() = _issues
 
-    // hardcoded user value for searching repos
-    val user = "intuit"
-
     /**
      * Currently making network calls directly from the ViewModel
      * Future versions should do this from a repository and persist the data
      */
     private val retrofit = RetrofitInterface.client()
 
+    // hardcoded user value for searching repos
+    val user = "intuit"
+
+    private val _networkErrorMessage = MutableLiveData<Event<String>>()
+
+    val networkErrorMessage: LiveData<Event<String>>
+        get() = _networkErrorMessage
+
     /**
      * Fetches repos from the network
-     * If the network request is fulfilled, store the returned list in the view model
+     * If the request is fulfilled, store the returned list in the view model
+     * If the response code is anything other than 200, send a message to notify observers
      */
     fun fetchRepos() {
         viewModelScope.launch {
@@ -48,30 +51,31 @@ class GitHubViewModel : ViewModel() {
                 val response = retrofit.getRepos(user)
                 when (response.code()) {
                     200 -> _repos.value = response.body() as MutableList<Repo>
-                    else -> Log.i("network", response.toString())
+                    else -> _networkErrorMessage.value = Event("Uh oh! Network returned response code ${response.code()}")
                 }
             } catch (exception: Exception) {
-                Log.i("network", exception.message.toString())
+                _networkErrorMessage.value = Event("Oops! ${exception.message.toString()}}")
             }
         }
     }
 
     /**
      * Fetches issues from the network
-     * If the network request is fulfilled, store the returned list in the view model
+     * If the request is fulfilled, store the returned list in the view model
+     * If the response code is anything other than 200, send a message to notify observers
      *
      * @param repo The selected repository to pull issues from
      */
     fun fetchIssues(repo: String) {
         viewModelScope.launch {
             try {
-                val response = retrofit.getIssues(user, repo, "all")
+                val response = retrofit.getIssues(user+"oijsdf", repo, "all")
                 when (response.code()) {
                     200 -> _issues.value = response.body() as MutableList<Issue>
-                    else -> Log.i("network", response.toString())
+                    else -> _networkErrorMessage.value = Event("Uh oh! Network returned response code ${response.code()}")
                 }
             } catch (exception: Exception) {
-                Log.i("network", exception.message.toString())
+                _networkErrorMessage.value = Event("Oops! ${exception.message.toString()}}")
             }
         }
     }

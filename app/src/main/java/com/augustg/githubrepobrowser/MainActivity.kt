@@ -9,8 +9,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Loves me an empty Activity :D
-
         /**
          * I chose to use a NavHostFragment with @navigation/nav_graph.xml
          *

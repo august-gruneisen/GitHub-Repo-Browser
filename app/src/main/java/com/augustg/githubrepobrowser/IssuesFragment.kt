@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
@@ -31,8 +32,11 @@ class IssuesFragment : Fragment() {
 
         // Fetch issues and observe response
         viewModel.fetchIssues(args.name)
-        viewModel.issues.observe(this, Observer {
-            setupCardGallery(it)
+        viewModel.issues.observe(this, Observer { setupCardGallery(it) })
+
+        // observe network errors and toast response code
+        viewModel.networkErrorMessage.observe(this, Observer { event ->
+            event?.getContent()?.let { Toast.makeText(activity?.applicationContext, it, Toast.LENGTH_LONG).show() }
         })
     }
 
@@ -42,11 +46,15 @@ class IssuesFragment : Fragment() {
     // This layout will be used when no issues are selected
     private fun getInnerCardLayoutDashboard(): Int = R.layout.issue_card_dashboard
 
-    // Sets up a Truffle Shuffle gallery of issue cards :)
-    private fun setupCardGallery(it: MutableList<Issue>) {
+    /**
+     * Sets up a Truffle Shuffle gallery of issue cards
+     *
+     * @param issues List of issues to be displayed
+     */
+    private fun setupCardGallery(issues: MutableList<Issue>) {
         val cardLayout = card_gallery_percentage_view_group as CardViewGroup
         IssuesAdapter(
-            it as ArrayList<Issue>,
+            issues as ArrayList<Issue>,
             card_gallery_percentage_view_group.context,
             getInnerCardLayoutDetail(),
             getInnerCardLayoutDashboard() // this fourth parameter demos the added feature
