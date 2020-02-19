@@ -3,20 +3,22 @@ A wrapper on GitHub's API that allows for easy browsing of repos and their detai
 
 ### Features:
 
-1. Implement a network interface using Retrofit with functions for each call
-	- Each call will need a separate data model for request and response
-	- Data should flow through a repository to a view model
-	- Store list of Repo objects in Room, accessible by its “id”
+1. Implements a network interface using Retrofit
+	- Each call uses a data model for request and response
+	- Data flows through a view model
 
-2. MainActivity should contain a fragment displaying a RecyclerView with each view holder bound to a repo
-	- ViewHolder should be a reusable custom view that exposes the ability to set a click handler
-	- Implement pagination if time permits
+2. MainActivity code is empty. Fragments display results from the API with data binding
+	- Utilizes NavHostFragment to navigate between fragments
+	- Most logic is within ViewModel
 
-3. Custom repo view should include hidden fields for details (stars, watchers, issue count, forks count)
-	- Click handler should simply toggle visibility for detail fields
-	- Include a “Drill In” button that navigates to a new fragment displaying issues
+3. Repo card view includes hidden fields for details (stars, watchers, issue count, forks count)
+	- Click handler toggles visibility for details
+	- Long click “Drill In” navigates to a new fragment displaying issues
 
-4. Issues should have their own reusable custom view
+4. Issues are displayed using Truffle Shuffle library :)
 
-### Notes:
-- I just noticed that the /issues call defaults to open issues only. Use issues/?state=all to show all issues.
+### Limitations:
+- Does not implement pagination, therefore only first 30 results are displayed
+- Does not persist data, therefore requires stable connection
+- Limited error handling for network requests. If successful, displays results -> else, Toast error
+- Does not yet provide an easy way for the user to view other repositories
