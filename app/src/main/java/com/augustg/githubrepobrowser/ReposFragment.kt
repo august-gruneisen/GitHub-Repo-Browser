@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.augustg.githubrepobrowser.adapters.ReposAdapter
+import com.augustg.githubrepobrowser.databinding.FragmentReposBinding
 import kotlinx.android.synthetic.main.fragment_repos.*
 
 /**
@@ -22,14 +23,18 @@ import kotlinx.android.synthetic.main.fragment_repos.*
  */
 class ReposFragment : Fragment() {
 
+    private lateinit var binding: FragmentReposBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_repos, container, false)
+        binding = FragmentReposBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         val viewModel by viewModels<GitHubViewModel>()
+        binding.viewModel = viewModel
 
         repos_recyclerview.apply {
             hasFixedSize()

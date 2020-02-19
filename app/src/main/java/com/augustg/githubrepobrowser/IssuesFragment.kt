@@ -12,22 +12,27 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.augustg.githubrepobrowser.api.Issue
 import com.augustg.githubrepobrowser.adapters.IssuesAdapter
+import com.augustg.githubrepobrowser.databinding.FragmentIssuesBinding
 import com.intuit.truffleshuffle.CardViewGroup
 import kotlinx.android.synthetic.main.fragment_issues.*
 
 class IssuesFragment : Fragment() {
 
+    private lateinit var binding: FragmentIssuesBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_issues, container, false)
+        binding = FragmentIssuesBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         val viewModel by viewModels<GitHubViewModel>()
+        binding.viewModel = viewModel
         val args: IssuesFragmentArgs by navArgs()
 
         // Fetch issues and observe response

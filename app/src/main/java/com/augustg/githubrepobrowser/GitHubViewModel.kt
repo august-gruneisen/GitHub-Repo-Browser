@@ -1,5 +1,6 @@
 package com.augustg.githubrepobrowser
 
+import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -40,12 +41,17 @@ class GitHubViewModel : ViewModel() {
     val networkErrorMessage: LiveData<Event<String>>
         get() = _networkErrorMessage
 
+    val inProgress = ObservableBoolean()
+
     /**
      * Fetches repos from the network
      * If the request is fulfilled, store the returned list in the view model
      * If the response code is anything other than 200, send a message to notify observers
      */
     fun fetchRepos() {
+        // show progress spinner
+        inProgress.set(true)
+        // make network call
         viewModelScope.launch {
             try {
                 val response = retrofit.getRepos(user)
@@ -56,6 +62,8 @@ class GitHubViewModel : ViewModel() {
             } catch (exception: Exception) {
                 _networkErrorMessage.value = Event("Oops! ${exception.message.toString()}}")
             }
+            // hide progress spinner
+            inProgress.set(false)
         }
     }
 
@@ -67,9 +75,12 @@ class GitHubViewModel : ViewModel() {
      * @param repo The selected repository to pull issues from
      */
     fun fetchIssues(repo: String) {
+        // show progress spinner
+        inProgress.set(true)
+        // make network call
         viewModelScope.launch {
             try {
-                val response = retrofit.getIssues(user+"oijsdf", repo, "all")
+                val response = retrofit.getIssues(user, repo, "all")
                 when (response.code()) {
                     200 -> _issues.value = response.body() as MutableList<Issue>
                     else -> _networkErrorMessage.value = Event("Uh oh! Network returned response code ${response.code()}")
@@ -77,6 +88,8 @@ class GitHubViewModel : ViewModel() {
             } catch (exception: Exception) {
                 _networkErrorMessage.value = Event("Oops! ${exception.message.toString()}}")
             }
+            // hide progress spinner
+            inProgress.set(false)
         }
     }
 }
