@@ -1,6 +1,6 @@
 package com.augustg.githubrepobrowser.api
 
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -10,10 +10,12 @@ import retrofit2.http.Query
 interface RetrofitInterface {
 
     @GET("/users/{username}/repos")
-    fun getRepos(@Path("username") username: String): Call<List<Repo>>
+    suspend fun getRepos(@Path("username") username: String)
+            : Response<List<Repo>>
 
     @GET("repos/{owner}/{repo}/issues")
-    fun getIssues(@Path("owner") owner: String, @Path("repo") repo: String, @Query("type") type: String): Call<List<Issue>>
+    suspend fun getIssues(@Path("owner") owner: String, @Path("repo") repo: String, @Query("type") type: String)
+            : Response<List<Issue>>
 
     companion object {
 
@@ -24,7 +26,7 @@ interface RetrofitInterface {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        fun client() : RetrofitInterface {
+        fun client(): RetrofitInterface {
             return retrofit.create(RetrofitInterface::class.java)
         }
     }
