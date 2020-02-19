@@ -7,9 +7,9 @@ A wrapper on GitHub's API that allows for easy browsing of repos and their detai
 	- Each call uses a data model for request and response
 	- Data flows through a view model
 
-2. MainActivity code is empty. Fragments display results from the API with data binding
+2. MainActivity code is empty. Fragments display results from the network with data binding
 	- Utilizes NavHostFragment to navigate between fragments
-	- Most logic is within ViewModel
+	- Most logic is inside the ViewModel
 
 3. Repo card view includes hidden fields for details (stars, watchers, issue count, forks count)
 	- Click handler toggles visibility for details
@@ -18,7 +18,7 @@ A wrapper on GitHub's API that allows for easy browsing of repos and their detai
 4. Issues are displayed using Truffle Shuffle library :)
 
 ### Limitations:
-- Does not implement pagination, therefore only first 30 results are displayed
+- Does not implement pagination - only the first 30 results are displayed
 - Does not persist data, therefore requires stable connection
-- Limited error handling for network requests. If successful, displays results -> else, Toast error
-- Does not yet provide an easy way for the user to view other repositories
+- Limited error handling for network requests. If successful, displays results -> else, toasts error
+- Does not yet provide an easy way for the user to authenticate or change orgs
